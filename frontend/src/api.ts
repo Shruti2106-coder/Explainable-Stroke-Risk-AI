@@ -1,11 +1,6 @@
 import type { GlobalExplanation, LocalExplanation, ModelInfo, PatientPayload, PredictionResult } from './types'
 
-const configuredApiBase = import.meta.env.VITE_API_BASE_URL
-const API_BASE = (
-  configuredApiBase
-    ? (/^https?:\/\//i.test(configuredApiBase) ? configuredApiBase : `https://${configuredApiBase}`)
-    : 'http://127.0.0.1:8000'
-).replace(/\/$/, '')
+const API_BASE = (import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8000').replace(/\/$/, '')
 
 export class ApiError extends Error {
   status: number
