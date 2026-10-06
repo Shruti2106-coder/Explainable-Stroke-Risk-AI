@@ -24,7 +24,11 @@ def _frontend_origins() -> list[str]:
         "FRONTEND_ORIGINS",
         "http://localhost:5173,http://127.0.0.1:5173",
     )
-    return [origin.strip() for origin in configured.split(",") if origin.strip()]
+    origins = [origin.strip() for origin in configured.split(",") if origin.strip()]
+    return [
+        origin if origin.startswith(("http://", "https://")) else f"https://{origin}"
+        for origin in origins
+    ]
 
 app = FastAPI(
     title="Stroke Risk Assessment API",

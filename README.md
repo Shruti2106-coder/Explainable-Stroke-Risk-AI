@@ -96,6 +96,17 @@ npm run dev
 
 Open `http://localhost:5173`. Set `VITE_API_BASE_URL` in `frontend/.env.local` if the API runs at another origin. The backend CORS allow-list is configured with `FRONTEND_ORIGINS`.
 
+## Public deployment
+
+The root `render.yaml` defines the React static site and FastAPI service as a Render Blueprint. To publish both:
+
+1. Push the project to the connected public GitHub repository. The three required files under `models/` are included in that repository so the API can load the saved pipeline; do not add other model-training artifacts.
+2. Sign in to [Render](https://dashboard.render.com), choose **New > Blueprint**, and connect this repository.
+3. Review the two free services and choose **Apply**. Render builds the frontend and backend, deriving their API URL and CORS origin from the deployed service hostnames.
+4. Open the `stroke-insight-web` URL shown by Render. Use the `stroke-insight-api` `/docs` URL to inspect the backend.
+
+The backend build regenerates the prepared data and stratified splits needed by the existing SHAP explanation endpoints. It does not train or replace the saved model. Free services may take time to wake after inactivity.
+
 ## Safety
 
 This system is for educational experimentation only. Its outputs are not medical diagnoses or a substitute for professional medical advice.

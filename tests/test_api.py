@@ -114,3 +114,14 @@ def test_cors_allows_configured_vite_origin(api_client, patient_payload):
     )
     assert response.status_code == 200
     assert response.headers["access-control-allow-origin"] == "http://localhost:5173"
+
+
+def test_frontend_origins_accept_render_hostnames(monkeypatch):
+    from app.main import _frontend_origins
+
+    monkeypatch.setenv("FRONTEND_ORIGINS", "stroke-insight-web.onrender.com,https://custom.example")
+
+    assert _frontend_origins() == [
+        "https://stroke-insight-web.onrender.com",
+        "https://custom.example",
+    ]

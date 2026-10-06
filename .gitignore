@@ -8,6 +8,9 @@ venv/
 .mypy_cache/
 models/*
 !models/.gitkeep
+!models/final_stroke_risk_pipeline.joblib
+!models/final_feature_config.json
+!models/final_model_metadata.json
 reports/*
 !reports/dataset_analysis.md
 !reports/.gitkeep

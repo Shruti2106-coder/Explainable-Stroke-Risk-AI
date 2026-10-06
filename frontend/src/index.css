@@ -193,7 +193,14 @@ a { color: inherit; text-decoration: none; }
 .result-overview p { margin: 14px 0 18px; color: var(--muted); font-size: 11px; line-height: 1.6; }
 .probability-panel { min-height: 238px; padding: 18px 19px; }
 .probability-panel h2 { margin: 0; font-size: 13px; }
-.probability-chart { height: 178px; margin-top: 12px; }
+.probability-list { display: grid; gap: 13px; margin-top: 18px; }
+.probability-row { min-width: 0; }
+.probability-row-heading { display: grid; grid-template-columns: 1fr auto auto; align-items: center; gap: 8px; margin-bottom: 6px; }
+.probability-class { font-size: 11px; font-weight: 700; }
+.probability-value { color: var(--navy); font-size: 11px; font-variant-numeric: tabular-nums; }
+.probability-highest-label { padding: 3px 7px; border-radius: 99px; background: #E9F2F5; color: #456774; font-size: 9px; font-weight: 600; }
+.probability-track { height: 9px; overflow: hidden; border-radius: 99px; background: #EAF0F2; }
+.probability-fill { display: block; height: 100%; min-width: 0; border-radius: inherit; transition: width .25s ease; }
 .summary-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 9px; }
 .summary-item { padding: 11px; border: 1px solid #E4ECEF; border-radius: 6px; background: #FCFDFD; }
 .summary-item span { display: block; color: var(--muted); font-size: 9px; }
